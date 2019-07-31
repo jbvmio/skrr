@@ -1,0 +1,14 @@
+# /etc/systemd/system/skrr.service
+
+[Unit]
+Description = Kafka Replication Reconcile
+After = network.target kafka.service zookeeper.service
+
+[Service]
+ExecStart = /bin/skrr --config /etc/skrr/config.yaml
+Restart=on-failure
+RestartSec=60s
+
+[Install]
+WantedBy = multi-user.target
+

@@ -1,0 +1,29 @@
+loglevel: debug
+monitor:
+  bindaddress: "0.0.0.0"
+  bindport: 31000
+  apiport: 31001
+  peers:
+    - atl-dc2-kafka-broker01
+    - atl-dc2-kafka-broker02
+    - atl-dc2-kafka-broker03
+    - atl-dc2-kafka-broker04
+    - atl-dc2-kafka-broker05
+  leadercheck: 1m
+  peercheck: 2m
+  reconcile: 5m
+  execute: false
+  whitelist: false
+details:
+  atl-atl:
+    replicationapi: http://atl-dc2-kafka-broker01:9000
+    brokeraddress: atl-dc2-kafka-broker01:9092
+    sourcebroker: atl-dc1-kafka-broker01:9092
+    zkaddress: atl-dc2-kafka-broker01:2181
+    zkroot: /ureplicator
+  sea-atl:
+    replicationapi: http://atl-dc2-kafka-broker01:9002
+    brokeraddress: atl-dc2-kafka-broker01:9092
+    sourcebroker: sea-kafka-broker01:9092
+    zkaddress: atl-dc2-kafka-broker01:2181
+    zkroot: /ureplicator
